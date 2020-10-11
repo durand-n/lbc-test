@@ -27,9 +27,9 @@ public class ApplicationCoordinator: BaseCoordinator {
         let offersCoordinator = coordinatorFactory.makeOffersCoordinator(router: router, factory: moduleFactory)
         addChild(offersCoordinator)
         offersCoordinator.start()
-//        offersCoordinator.finishFlow = {
-//            self.removeChild(offersCoordinator)
-//        }
+        offersCoordinator.finishFlow = {
+            self.removeChild(offersCoordinator)
+        }
     }
 
 }

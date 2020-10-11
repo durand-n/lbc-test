@@ -10,6 +10,7 @@ import UIKit
 class OffersCoordinator: BaseCoordinator {
     private let factory: OffersModuleFactory
     private let router: Router
+    private let viewModel = OffersViewModel()
     
     init(factory: OffersModuleFactory, router: Router) {
         self.router = router
@@ -17,7 +18,19 @@ class OffersCoordinator: BaseCoordinator {
     }
     
     override func start() {
-        let module = factory.makeOffersController(viewModel: OffersViewModel())
+        showOffersList()
+    }
+    
+    func showOffersList() {
+        let module = factory.makeOffersController(viewModel: viewModel)
+        module.onShowDetails = { index in
+            self.showOfferDetails(itemIndex: index)
+        }
+        
         self.router.push(module)
+    }
+    
+    func showOfferDetails(itemIndex: Int) {
+        
     }
 }

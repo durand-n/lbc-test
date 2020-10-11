@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14AF492425335FEA00D3FA4C /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AF492325335FEA00D3FA4C /* UIView.swift */; };
 		14F8E1502531FAC80007B0A2 /* proto_lbcTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F8E14F2531FAC80007B0A2 /* proto_lbcTests.swift */; };
 		14F8E15B2531FAC80007B0A2 /* proto_lbcUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F8E15A2531FAC80007B0A2 /* proto_lbcUITests.swift */; };
 		14F8E1EB2532481A0007B0A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14F8E1E92532481A0007B0A2 /* LaunchScreen.storyboard */; };
@@ -25,6 +26,9 @@
 		14F8E21C253248A90007B0A2 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F8E20B253248A90007B0A2 /* Router.swift */; };
 		14F8E21D253248A90007B0A2 /* CoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F8E20C253248A90007B0A2 /* CoordinatorFactory.swift */; };
 		14F8E231253249DE0007B0A2 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F8E230253249DE0007B0A2 /* UIViewController.swift */; };
+		14F8E251253250530007B0A2 /* OffersApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F8E250253250530007B0A2 /* OffersApi.swift */; };
+		14F8E256253250CB0007B0A2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F8E255253250CB0007B0A2 /* Constants.swift */; };
+		14F8E25C2532673B0007B0A2 /* OffersApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F8E25B2532673B0007B0A2 /* OffersApiModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14AF492325335FEA00D3FA4C /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		14F8E1352531FAC40007B0A2 /* proto-lbc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "proto-lbc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		14F8E14B2531FAC80007B0A2 /* proto-lbcTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "proto-lbcTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		14F8E14F2531FAC80007B0A2 /* proto_lbcTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = proto_lbcTests.swift; sourceTree = "<group>"; };
@@ -69,6 +74,9 @@
 		14F8E20B253248A90007B0A2 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		14F8E20C253248A90007B0A2 /* CoordinatorFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatorFactory.swift; sourceTree = "<group>"; };
 		14F8E230253249DE0007B0A2 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		14F8E250253250530007B0A2 /* OffersApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersApi.swift; sourceTree = "<group>"; };
+		14F8E255253250CB0007B0A2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		14F8E25B2532673B0007B0A2 /* OffersApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersApiModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,7 +152,9 @@
 				14F8E206253248A90007B0A2 /* Base */,
 				14F8E1F9253248A90007B0A2 /* Factories */,
 				14F8E200253248A90007B0A2 /* Flows */,
+				14F8E24725324FE30007B0A2 /* Network */,
 				14F8E1F6253248A90007B0A2 /* Extensions */,
+				14F8E255253250CB0007B0A2 /* Constants.swift */,
 			);
 			path = "proto-lbc";
 			sourceTree = "<group>";
@@ -154,6 +164,7 @@
 			children = (
 				14F8E1F8253248A90007B0A2 /* UIColor.swift */,
 				14F8E230253249DE0007B0A2 /* UIViewController.swift */,
+				14AF492325335FEA00D3FA4C /* UIView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -220,6 +231,23 @@
 				14F8E20B253248A90007B0A2 /* Router.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		14F8E24725324FE30007B0A2 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				14F8E25A253267230007B0A2 /* Offers */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		14F8E25A253267230007B0A2 /* Offers */ = {
+			isa = PBXGroup;
+			children = (
+				14F8E250253250530007B0A2 /* OffersApi.swift */,
+				14F8E25B2532673B0007B0A2 /* OffersApiModel.swift */,
+			);
+			path = Offers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -351,7 +379,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14AF492425335FEA00D3FA4C /* UIView.swift in Sources */,
 				14F8E217253248A90007B0A2 /* OffersCoordinator.swift in Sources */,
+				14F8E256253250CB0007B0A2 /* Constants.swift in Sources */,
 				14F8E216253248A90007B0A2 /* OffersViewModel.swift in Sources */,
 				14F8E211253248A90007B0A2 /* ModuleFactoryImp.swift in Sources */,
 				14F8E215253248A90007B0A2 /* OffersController.swift in Sources */,
@@ -360,9 +390,11 @@
 				14F8E210253248A90007B0A2 /* UIColor.swift in Sources */,
 				14F8E214253248A90007B0A2 /* AppDelegate.swift in Sources */,
 				14F8E21D253248A90007B0A2 /* CoordinatorFactory.swift in Sources */,
+				14F8E251253250530007B0A2 /* OffersApi.swift in Sources */,
 				14F8E21C253248A90007B0A2 /* Router.swift in Sources */,
 				14F8E213253248A90007B0A2 /* CoordinatorFactoryImp.swift in Sources */,
 				14F8E20D253248A90007B0A2 /* AppCoordinator.swift in Sources */,
+				14F8E25C2532673B0007B0A2 /* OffersApiModel.swift in Sources */,
 				14F8E219253248A90007B0A2 /* Base.swift in Sources */,
 				14F8E231253249DE0007B0A2 /* UIViewController.swift in Sources */,
 			);

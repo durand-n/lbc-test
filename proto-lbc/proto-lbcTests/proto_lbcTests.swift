@@ -8,26 +8,21 @@
 import XCTest
 @testable import proto_lbc
 
-class proto_lbcTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+class OffersTestApi: OffersApi {
+    func getListing(completion: @escaping ([OffersApiModel.Item]?, Error?) -> Void) {
+        completion([], nil)
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func getCategories(completion: @escaping ([OffersApiModel.Category]?, Error?) -> Void) {
+        completion([], nil)
     }
+}
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+class OffersViewModelTests: XCTestCase {
+    private var viewModel: OffersViewModelType = OffersViewModel(services: OffersTestApi())
+    
+    
+    func testOffersTitle() throws {
+        XCTAssertEqual(viewModel.title, "0 items available")
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }
