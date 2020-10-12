@@ -39,6 +39,12 @@ class OffersListController: UIViewController, OffersListView {
         viewModel.startFetching()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        title = viewModel.title
+    }
+
+    
     func designView() {
         view.addSubview(tableView)
         

@@ -51,7 +51,7 @@ class OffersViewModel: OffersListViewModelType {
     //Protocol properties compliance
     
     var title: String {
-        return "\(offers.count) items available"
+        return "\(offers.count) annonces disponibles"
     }
     
     var offersCount: Int {
