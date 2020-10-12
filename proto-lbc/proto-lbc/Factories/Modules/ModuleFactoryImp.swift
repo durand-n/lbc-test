@@ -10,7 +10,12 @@ import Foundation
 final class ModuleFactoryImp {}
 
 extension ModuleFactoryImp: OffersModuleFactory {
-    func makeOffersController(viewModel: OffersViewModelType) -> OffersView {
-        return OffersController(viewModel: viewModel)
+    
+    func makeOffersListController(viewModel: OffersListViewModelType) -> OffersListView {
+        return OffersListController(viewModel: viewModel)
+    }
+    
+    func makeOfferDetailsController(viewModel: OfferDetailsViewModelType) -> OfferDetailsView {
+        return OfferDetailsController(viewModel: viewModel)
     }
 }

@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		14AF492425335FEA00D3FA4C /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AF492325335FEA00D3FA4C /* UIView.swift */; };
+		14AF492F25339AA400D3FA4C /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AF492E25339AA400D3FA4C /* BaseNavigationController.swift */; };
+		14AF49372533AAE900D3FA4C /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AF49362533AAE900D3FA4C /* UITableView.swift */; };
+		14AF493C2533AC6100D3FA4C /* OfferTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AF493B2533AC6100D3FA4C /* OfferTableViewCell.swift */; };
+		14AF49412533AD3100D3FA4C /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AF49402533AD3100D3FA4C /* UILabel.swift */; };
+		14AF49462533BD8C00D3FA4C /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AF49452533BD8C00D3FA4C /* Date.swift */; };
+		14AF494F2533CA9100D3FA4C /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AF494E2533CA9100D3FA4C /* UIImageView.swift */; };
+		14AF49592533CFF000D3FA4C /* OfferDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AF49582533CFF000D3FA4C /* OfferDetailsController.swift */; };
 		14F8E1502531FAC80007B0A2 /* proto_lbcTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F8E14F2531FAC80007B0A2 /* proto_lbcTests.swift */; };
 		14F8E15B2531FAC80007B0A2 /* proto_lbcUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F8E15A2531FAC80007B0A2 /* proto_lbcUITests.swift */; };
 		14F8E1EB2532481A0007B0A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14F8E1E92532481A0007B0A2 /* LaunchScreen.storyboard */; };
@@ -18,7 +25,7 @@
 		14F8E212253248A90007B0A2 /* ModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F8E1FD253248A90007B0A2 /* ModuleFactory.swift */; };
 		14F8E213253248A90007B0A2 /* CoordinatorFactoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F8E1FE253248A90007B0A2 /* CoordinatorFactoryImp.swift */; };
 		14F8E214253248A90007B0A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F8E1FF253248A90007B0A2 /* AppDelegate.swift */; };
-		14F8E215253248A90007B0A2 /* OffersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F8E202253248A90007B0A2 /* OffersController.swift */; };
+		14F8E215253248A90007B0A2 /* OffersListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F8E202253248A90007B0A2 /* OffersListController.swift */; };
 		14F8E216253248A90007B0A2 /* OffersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F8E203253248A90007B0A2 /* OffersViewModel.swift */; };
 		14F8E217253248A90007B0A2 /* OffersCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F8E204253248A90007B0A2 /* OffersCoordinator.swift */; };
 		14F8E219253248A90007B0A2 /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F8E207253248A90007B0A2 /* Base.swift */; };
@@ -50,6 +57,14 @@
 
 /* Begin PBXFileReference section */
 		14AF492325335FEA00D3FA4C /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		14AF492E25339AA400D3FA4C /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		14AF49362533AAE900D3FA4C /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		14AF493B2533AC6100D3FA4C /* OfferTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferTableViewCell.swift; sourceTree = "<group>"; };
+		14AF49402533AD3100D3FA4C /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		14AF49452533BD8C00D3FA4C /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		14AF494A2533C8F000D3FA4C /* proto-lbc.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "proto-lbc.entitlements"; sourceTree = "<group>"; };
+		14AF494E2533CA9100D3FA4C /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		14AF49582533CFF000D3FA4C /* OfferDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailsController.swift; sourceTree = "<group>"; };
 		14F8E1352531FAC40007B0A2 /* proto-lbc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "proto-lbc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		14F8E14B2531FAC80007B0A2 /* proto-lbcTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "proto-lbcTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		14F8E14F2531FAC80007B0A2 /* proto_lbcTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = proto_lbcTests.swift; sourceTree = "<group>"; };
@@ -65,7 +80,7 @@
 		14F8E1FD253248A90007B0A2 /* ModuleFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleFactory.swift; sourceTree = "<group>"; };
 		14F8E1FE253248A90007B0A2 /* CoordinatorFactoryImp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatorFactoryImp.swift; sourceTree = "<group>"; };
 		14F8E1FF253248A90007B0A2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		14F8E202253248A90007B0A2 /* OffersController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffersController.swift; sourceTree = "<group>"; };
+		14F8E202253248A90007B0A2 /* OffersListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffersListController.swift; sourceTree = "<group>"; };
 		14F8E203253248A90007B0A2 /* OffersViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffersViewModel.swift; sourceTree = "<group>"; };
 		14F8E204253248A90007B0A2 /* OffersCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffersCoordinator.swift; sourceTree = "<group>"; };
 		14F8E205253248A90007B0A2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -104,6 +119,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14AF49562533CFC900D3FA4C /* List */ = {
+			isa = PBXGroup;
+			children = (
+				14F8E202253248A90007B0A2 /* OffersListController.swift */,
+				14AF493B2533AC6100D3FA4C /* OfferTableViewCell.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		14AF49572533CFD300D3FA4C /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				14AF49582533CFF000D3FA4C /* OfferDetailsController.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
 		14F8E12C2531FAC40007B0A2 = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +178,7 @@
 		14F8E1F3253248A90007B0A2 /* proto-lbc */ = {
 			isa = PBXGroup;
 			children = (
+				14AF494A2533C8F000D3FA4C /* proto-lbc.entitlements */,
 				14F8E1F5253248A90007B0A2 /* Assets.xcassets */,
 				14F8E1FF253248A90007B0A2 /* AppDelegate.swift */,
 				14F8E205253248A90007B0A2 /* Info.plist */,
@@ -165,6 +198,10 @@
 				14F8E1F8253248A90007B0A2 /* UIColor.swift */,
 				14F8E230253249DE0007B0A2 /* UIViewController.swift */,
 				14AF492325335FEA00D3FA4C /* UIView.swift */,
+				14AF49362533AAE900D3FA4C /* UITableView.swift */,
+				14AF49402533AD3100D3FA4C /* UILabel.swift */,
+				14AF49452533BD8C00D3FA4C /* Date.swift */,
+				14AF494E2533CA9100D3FA4C /* UIImageView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -208,7 +245,8 @@
 		14F8E201253248A90007B0A2 /* Offers */ = {
 			isa = PBXGroup;
 			children = (
-				14F8E202253248A90007B0A2 /* OffersController.swift */,
+				14AF49572533CFD300D3FA4C /* Detail */,
+				14AF49562533CFC900D3FA4C /* List */,
 				14F8E203253248A90007B0A2 /* OffersViewModel.swift */,
 				14F8E204253248A90007B0A2 /* OffersCoordinator.swift */,
 			);
@@ -219,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				14F8E207253248A90007B0A2 /* Base.swift */,
+				14AF492E25339AA400D3FA4C /* BaseNavigationController.swift */,
 				14F8E209253248A90007B0A2 /* Router */,
 			);
 			path = Base;
@@ -379,22 +418,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14AF49462533BD8C00D3FA4C /* Date.swift in Sources */,
 				14AF492425335FEA00D3FA4C /* UIView.swift in Sources */,
 				14F8E217253248A90007B0A2 /* OffersCoordinator.swift in Sources */,
 				14F8E256253250CB0007B0A2 /* Constants.swift in Sources */,
 				14F8E216253248A90007B0A2 /* OffersViewModel.swift in Sources */,
 				14F8E211253248A90007B0A2 /* ModuleFactoryImp.swift in Sources */,
-				14F8E215253248A90007B0A2 /* OffersController.swift in Sources */,
+				14F8E215253248A90007B0A2 /* OffersListController.swift in Sources */,
+				14AF493C2533AC6100D3FA4C /* OfferTableViewCell.swift in Sources */,
+				14AF492F25339AA400D3FA4C /* BaseNavigationController.swift in Sources */,
 				14F8E212253248A90007B0A2 /* ModuleFactory.swift in Sources */,
 				14F8E21B253248A90007B0A2 /* RouterImp.swift in Sources */,
 				14F8E210253248A90007B0A2 /* UIColor.swift in Sources */,
 				14F8E214253248A90007B0A2 /* AppDelegate.swift in Sources */,
 				14F8E21D253248A90007B0A2 /* CoordinatorFactory.swift in Sources */,
 				14F8E251253250530007B0A2 /* OffersApi.swift in Sources */,
+				14AF49592533CFF000D3FA4C /* OfferDetailsController.swift in Sources */,
+				14AF49412533AD3100D3FA4C /* UILabel.swift in Sources */,
+				14AF494F2533CA9100D3FA4C /* UIImageView.swift in Sources */,
 				14F8E21C253248A90007B0A2 /* Router.swift in Sources */,
 				14F8E213253248A90007B0A2 /* CoordinatorFactoryImp.swift in Sources */,
 				14F8E20D253248A90007B0A2 /* AppCoordinator.swift in Sources */,
 				14F8E25C2532673B0007B0A2 /* OffersApiModel.swift in Sources */,
+				14AF49372533AAE900D3FA4C /* UITableView.swift in Sources */,
 				14F8E219253248A90007B0A2 /* Base.swift in Sources */,
 				14F8E231253249DE0007B0A2 /* UIViewController.swift in Sources */,
 			);
@@ -553,6 +599,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "proto-lbc/proto-lbc.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GJG75689M4;
 				INFOPLIST_FILE = "proto-lbc/Info.plist";
@@ -563,6 +610,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "durand-n.proto-lbc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -573,6 +621,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "proto-lbc/proto-lbc.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GJG75689M4;
 				INFOPLIST_FILE = "proto-lbc/Info.plist";
@@ -583,6 +632,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "durand-n.proto-lbc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

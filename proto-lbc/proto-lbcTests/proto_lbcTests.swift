@@ -19,7 +19,7 @@ class OffersTestApi: OffersApi {
 }
 
 class OffersViewModelTests: XCTestCase {
-    private var viewModel: OffersViewModelType = OffersViewModel(services: OffersTestApi())
+    private var viewModel: OffersListViewModelType = OffersViewModel(services: OffersTestApi())
     
     
     func testOffersTitle() throws {

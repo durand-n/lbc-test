@@ -22,15 +22,14 @@ class OffersCoordinator: BaseCoordinator {
     }
     
     func showOffersList() {
-        let module = factory.makeOffersController(viewModel: viewModel)
-        module.onShowDetails = { index in
-            self.showOfferDetails(itemIndex: index)
-        }
+        let module = factory.makeOffersListController(viewModel: viewModel)
+        module.onShowDetails = self.showOfferDetails
         
         self.router.push(module)
     }
     
-    func showOfferDetails(itemIndex: Int) {
-        
+    func showOfferDetails() {
+        let module = factory.makeOfferDetailsController(viewModel: viewModel)
+        self.router.push(module)
     }
 }

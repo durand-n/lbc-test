@@ -56,4 +56,20 @@ extension UIView {
             self.isHidden = true
         })
     }
+    
+    open func setConstraintsToSuperview() {
+        guard let superview = self.superview else { return }
+        self.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.topAnchor.constraint(equalTo: superview.topAnchor),
+            self.bottomAnchor.constraint(equalTo: superview.bottomAnchor),
+            self.leftAnchor.constraint(equalTo: superview.leftAnchor),
+            self.rightAnchor.constraint(equalTo: superview.rightAnchor),
+        ])
+    }
+    
+    open func setConstraints(_ constraints: [NSLayoutConstraint]) {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate(constraints)
+    }
 }

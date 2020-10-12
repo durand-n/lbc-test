@@ -19,6 +19,7 @@ class OffersApiModel {
         var title: String
         var description: String
         var price: Double
+        var categoryId: Int
         var imagesUrl: Medias
         var creationDate: Date
         var isUrgent: Bool
@@ -28,6 +29,7 @@ class OffersApiModel {
             case title
             case description
             case price
+            case categoryId = "category_id"
             case imagesUrl = "images_url"
             case creationDate = "creation_date"
             case isUrgent = "is_urgent"

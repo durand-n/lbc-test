@@ -8,5 +8,6 @@
 import Foundation
 
 protocol OffersModuleFactory {
-    func makeOffersController(viewModel: OffersViewModelType) -> OffersView
+    func makeOffersListController(viewModel: OffersListViewModelType) -> OffersListView
+    func makeOfferDetailsController(viewModel: OfferDetailsViewModelType) -> OfferDetailsView
 }
