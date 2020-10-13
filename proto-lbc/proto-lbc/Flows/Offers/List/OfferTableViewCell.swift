@@ -9,14 +9,15 @@ import UIKit
 
 class OfferTableViewCell: UITableViewCell {
     let itemImageView = UIImageView(image: nil, contentMode: .scaleAspectFit)
-    let itemNameLabel = UILabel(title: "test", type: .semiBold, color: .black, size: 14, lines: 2, alignment: .left)
-    let itemPriceLabel = UILabel(title: "140€", type: .bold, color: .primary, size: 14, lines: 1, alignment: .left)
+    let itemNameLabel = UILabel(title: "", type: .semiBold, color: .black, size: 14, lines: 2, alignment: .left)
+    let itemPriceLabel = UILabel(title: "", type: .bold, color: .primary, size: 14, lines: 1, alignment: .left)
     let itemCategoryLabel = UILabel(title: "", type: .medium, color: .gray, size: 12, lines: 1, alignment: .left)
     let itemDateLabel = UILabel(title: "", type: .medium, color: .gray, size: 12, lines: 1, alignment: .left)
+    let urgentMarker = UILabel(title: "urgent", type: .semiBold, color: .systemRed, size: 10, lines: 0, alignment: .right)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.addSubviews([itemImageView, itemNameLabel, itemCategoryLabel, itemDateLabel, itemPriceLabel])
+        contentView.addSubviews([itemImageView, itemNameLabel, itemCategoryLabel, itemDateLabel, itemPriceLabel, urgentMarker])
         backgroundColor = .clear
         contentView.backgroundColor = .clear
         selectionStyle = .none
@@ -52,12 +53,18 @@ class OfferTableViewCell: UITableViewCell {
         itemPriceLabel.setConstraints([
             itemPriceLabel.topAnchor.constraint(equalTo: itemCategoryLabel.bottomAnchor, constant: 2),
             itemPriceLabel.leftAnchor.constraint(equalTo: itemImageView.rightAnchor, constant: 16),
-            itemPriceLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16),
             itemPriceLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -27),
+        ])
+        
+        urgentMarker.setConstraints([
+            urgentMarker.topAnchor.constraint(equalTo: itemCategoryLabel.bottomAnchor, constant: 2),
+            urgentMarker.leftAnchor.constraint(equalTo: itemPriceLabel.rightAnchor, constant: 16),
+            urgentMarker.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16),
+            urgentMarker.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -27),
         ])
     }
     
-    func setContent(title: String, date: NSAttributedString, category: String, price: String, imageUrl: URL?) {
+    func setContent(title: String, date: NSAttributedString, category: String, price: String, imageUrl: URL?, isUrgent: Bool) {
         itemNameLabel.text = title
         itemCategoryLabel.text = category
         itemDateLabel.attributedText = date
@@ -65,6 +72,7 @@ class OfferTableViewCell: UITableViewCell {
         if let url = imageUrl {
             itemImageView.load(url: url)
         }
+        urgentMarker.isHidden = !isUrgent
         
     }
     

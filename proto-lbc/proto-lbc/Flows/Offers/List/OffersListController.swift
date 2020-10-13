@@ -18,9 +18,11 @@ class OffersListController: UIViewController, OffersListView {
     // Private properties
     private var viewModel: OffersListViewModelType
     private var tableView = UITableView()
+    private var filtersModule: FilterCollection
     
     init(viewModel: OffersListViewModelType) {
         self.viewModel = viewModel
+        self.filtersModule = FilterCollection(viewModel: viewModel as! FilterCollectionViewModelType)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -46,24 +48,38 @@ class OffersListController: UIViewController, OffersListView {
 
     
     func designView() {
-        view.addSubview(tableView)
+        view.addSubviews([filtersModule, tableView])
         
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerCellClass(OfferTableViewCell.self)
         tableView.backgroundColor = .white
         tableView.separatorColor = UIColor.black.withAlphaComponent(0.2)
-        tableView.setConstraintsToSuperview()
+        
+        
+        filtersModule.setConstraints([
+            filtersModule.topAnchor.constraint(equalTo: view.topAnchor),
+            filtersModule.leftAnchor.constraint(equalTo: view.leftAnchor),
+            filtersModule.rightAnchor.constraint(equalTo: view.rightAnchor),
+        ])
+        
+        tableView.setConstraints([
+            tableView.topAnchor.constraint(equalTo: filtersModule.bottomAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
+        ])
     }
     
     func showError(error: String) {
         Loader.hide()
     }
     
-    func onShowData() {
+    func onShowData(refreshFilters: Bool = false) {
         DispatchQueue.main.async {
             self.title = self.viewModel.title
             self.tableView.reloadData()
+            self.filtersModule.refreshFilters()
         }
         
         Loader.hide()
@@ -84,7 +100,8 @@ extension OffersListController: UITableViewDelegate, UITableViewDataSource {
                         date: viewModel.getDateFor(row: indexPath.row),
                         category: viewModel.getCategoryFor(row: indexPath.row),
                         price: viewModel.getPriceFor(row: indexPath.row),
-                        imageUrl: viewModel.getImageUrlFor(row: indexPath.row))
+                        imageUrl: viewModel.getImageUrlFor(row: indexPath.row),
+                        isUrgent: viewModel.isUrgentFor(row: indexPath.row))
         return cell
     }
     

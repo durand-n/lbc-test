@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		149B5DAF25350FE3004797FD /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149B5DAE25350FE3004797FD /* UICollectionView.swift */; };
 		14AF492425335FEA00D3FA4C /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AF492325335FEA00D3FA4C /* UIView.swift */; };
 		14AF492F25339AA400D3FA4C /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AF492E25339AA400D3FA4C /* BaseNavigationController.swift */; };
 		14AF49372533AAE900D3FA4C /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AF49362533AAE900D3FA4C /* UITableView.swift */; };
@@ -15,6 +16,7 @@
 		14AF49462533BD8C00D3FA4C /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AF49452533BD8C00D3FA4C /* Date.swift */; };
 		14AF494F2533CA9100D3FA4C /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AF494E2533CA9100D3FA4C /* UIImageView.swift */; };
 		14AF49592533CFF000D3FA4C /* OfferDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AF49582533CFF000D3FA4C /* OfferDetailsController.swift */; };
+		14AF495F2535083E00D3FA4C /* FilterCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AF495E2535083E00D3FA4C /* FilterCollection.swift */; };
 		14F8E1502531FAC80007B0A2 /* proto_lbcTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F8E14F2531FAC80007B0A2 /* proto_lbcTests.swift */; };
 		14F8E15B2531FAC80007B0A2 /* proto_lbcUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F8E15A2531FAC80007B0A2 /* proto_lbcUITests.swift */; };
 		14F8E1EB2532481A0007B0A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14F8E1E92532481A0007B0A2 /* LaunchScreen.storyboard */; };
@@ -56,6 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		149B5DAE25350FE3004797FD /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
 		14AF492325335FEA00D3FA4C /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		14AF492E25339AA400D3FA4C /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		14AF49362533AAE900D3FA4C /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
@@ -65,6 +68,7 @@
 		14AF494A2533C8F000D3FA4C /* proto-lbc.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "proto-lbc.entitlements"; sourceTree = "<group>"; };
 		14AF494E2533CA9100D3FA4C /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		14AF49582533CFF000D3FA4C /* OfferDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailsController.swift; sourceTree = "<group>"; };
+		14AF495E2535083E00D3FA4C /* FilterCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollection.swift; sourceTree = "<group>"; };
 		14F8E1352531FAC40007B0A2 /* proto-lbc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "proto-lbc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		14F8E14B2531FAC80007B0A2 /* proto-lbcTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "proto-lbcTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		14F8E14F2531FAC80007B0A2 /* proto_lbcTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = proto_lbcTests.swift; sourceTree = "<group>"; };
@@ -136,6 +140,14 @@
 			path = Detail;
 			sourceTree = "<group>";
 		};
+		14AF495D2535081200D3FA4C /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				14AF495E2535083E00D3FA4C /* FilterCollection.swift */,
+			);
+			path = UIComponents;
+			sourceTree = "<group>";
+		};
 		14F8E12C2531FAC40007B0A2 = {
 			isa = PBXGroup;
 			children = (
@@ -202,6 +214,7 @@
 				14AF49402533AD3100D3FA4C /* UILabel.swift */,
 				14AF49452533BD8C00D3FA4C /* Date.swift */,
 				14AF494E2533CA9100D3FA4C /* UIImageView.swift */,
+				149B5DAE25350FE3004797FD /* UICollectionView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -245,6 +258,7 @@
 		14F8E201253248A90007B0A2 /* Offers */ = {
 			isa = PBXGroup;
 			children = (
+				14AF495D2535081200D3FA4C /* UIComponents */,
 				14AF49572533CFD300D3FA4C /* Detail */,
 				14AF49562533CFC900D3FA4C /* List */,
 				14F8E203253248A90007B0A2 /* OffersViewModel.swift */,
@@ -420,6 +434,7 @@
 			files = (
 				14AF49462533BD8C00D3FA4C /* Date.swift in Sources */,
 				14AF492425335FEA00D3FA4C /* UIView.swift in Sources */,
+				149B5DAF25350FE3004797FD /* UICollectionView.swift in Sources */,
 				14F8E217253248A90007B0A2 /* OffersCoordinator.swift in Sources */,
 				14F8E256253250CB0007B0A2 /* Constants.swift in Sources */,
 				14F8E216253248A90007B0A2 /* OffersViewModel.swift in Sources */,
@@ -443,6 +458,7 @@
 				14AF49372533AAE900D3FA4C /* UITableView.swift in Sources */,
 				14F8E219253248A90007B0A2 /* Base.swift in Sources */,
 				14F8E231253249DE0007B0A2 /* UIViewController.swift in Sources */,
+				14AF495F2535083E00D3FA4C /* FilterCollection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

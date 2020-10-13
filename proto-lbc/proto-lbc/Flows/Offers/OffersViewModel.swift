@@ -16,11 +16,12 @@ protocol OffersListViewModelType {
     func getCategoryFor(row: Int) -> String
     func getDateFor(row: Int) -> NSAttributedString
     func getImageUrlFor(row: Int) -> URL?
+    func isUrgentFor(row: Int) -> Bool
     func selectOffer(row: Int) -> Bool
     
     
     var onShowError: ((_ message: String) -> Void)? { get set }
-    var onShowData: (() -> Void)? { get set }
+    var onShowData: ((_ refreshFilters: Bool) -> Void)? { get set }
 }
 
 protocol OfferDetailsViewModelType {
@@ -35,13 +36,25 @@ class OffersViewModel: OffersListViewModelType {
         
     // Private properties
     private let services: OffersApi
-    private var categories: [Int: String] = [:]
+    private var categories: [Int: String] = [:] {
+        didSet {
+            activeCategories = []
+            availableCategories = Array(categories.keys)
+        }
+    }
+    private var activeCategories: [Int] = []
+    private var availableCategories: [Int] = []
+    private var originalOffers: [OffersApiModel.Item] = [] {
+        didSet {
+            applyFilters()
+        }
+    }
     private var offers: [OffersApiModel.Item] = []
     private var selectedOffer: OffersApiModel.Item?
     
     // Protocol blocks compliance
     var onShowError: ((_ message: String) -> Void)?
-    var onShowData: (() -> Void)?
+    var onShowData: ((_ refreshFilters: Bool) -> Void)?
     
     // init
     init(services: OffersApi = OffersApiImp()) {
@@ -89,14 +102,23 @@ class OffersViewModel: OffersListViewModelType {
         return URL(string: offers[row].imagesUrl.small ?? "")
     }
     
+    func isUrgentFor(row: Int) -> Bool {
+        guard row < offers.count else { return false }
+        return offers[row].isUrgent
+    }
+    
     func startFetching() {
         services.getCategories { categories, error in
             if let categories = categories {
                 self.translateToDictionnary(categories)
                 self.services.getListing { items, error in
                     if let items = items {
-                        self.offers = items
-                        self.onShowData?()
+                        self.originalOffers = items.filter({$0.isUrgent}).sorted(by: {
+                            $0.creationDate.compare($1.creationDate) == .orderedDescending
+                        }) + items.filter({!$0.isUrgent}).sorted(by: {
+                            $0.creationDate.compare($1.creationDate) == .orderedDescending
+                        })
+                        self.onShowData?(true)
                     } else {
                         self.onShowError?(error?.localizedDescription ?? "unknown error")
                     }
@@ -110,8 +132,12 @@ class OffersViewModel: OffersListViewModelType {
     func refreshOffersList() {
         services.getListing { items, error in
             if let items = items {
-                self.offers = items
-                self.onShowData?()
+                self.originalOffers = items.filter({$0.isUrgent}).sorted(by: {
+                    $0.creationDate.compare($1.creationDate) == .orderedDescending
+                }) + items.filter({!$0.isUrgent}).sorted(by: {
+                    $0.creationDate.compare($1.creationDate) == .orderedDescending
+                })
+                self.onShowData?(false)
             } else {
                 self.onShowError?(error?.localizedDescription ?? "unknown error")
             }
@@ -130,6 +156,15 @@ class OffersViewModel: OffersListViewModelType {
         guard row < offers.count else { return false }
         self.selectedOffer = offers[row]
         return true
+    }
+    
+    func applyFilters() {
+        if activeCategories.isEmpty {
+            offers = originalOffers
+        } else {
+            offers = originalOffers.filter({ activeCategories.contains($0.categoryId) })
+        }
+        self.onShowData?(false)
     }
     
 
@@ -169,4 +204,39 @@ extension OffersViewModel: OfferDetailsViewModelType {
     }
     
     
+}
+
+extension OffersViewModel: FilterCollectionViewModelType {
+    func deselectFilter(row: Int) {
+        let filter = self.activeCategories[row]
+        self.activeCategories.remove(at: row)
+        self.availableCategories.append(filter)
+        self.availableCategories.sort()
+        applyFilters()
+    }
+    
+    func selectFilter(row: Int) {
+        let filter = self.availableCategories[row]
+        self.availableCategories.remove(at: row)
+        self.activeCategories.append(filter)
+        applyFilters()
+    }
+    
+    var activeFiltersCount: Int {
+        return activeCategories.count
+    }
+    
+    var filtersCount: Int {
+        return availableCategories.count
+    }
+    
+    func activeFilterNameAt(row: Int) -> String {
+        guard row < activeCategories.count else { return "" }
+        return categories[activeCategories[row]] ?? ""
+    }
+    
+    func availableFilterNameAt(row: Int) -> String {
+        guard row < availableCategories.count else { return "" }
+        return categories[availableCategories[row]] ?? ""
+    }
 }
