@@ -69,6 +69,7 @@ class OfferTableViewCell: UITableViewCell {
         itemCategoryLabel.text = category
         itemDateLabel.attributedText = date
         itemPriceLabel.text = price
+        itemImageView.image = nil
         if let url = imageUrl {
             itemImageView.load(url: url)
         }

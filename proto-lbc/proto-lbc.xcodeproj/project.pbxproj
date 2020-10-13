@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		149B5DAF25350FE3004797FD /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149B5DAE25350FE3004797FD /* UICollectionView.swift */; };
+		14A1D4A72535B24100159C5C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A1D4A62535B24100159C5C /* String.swift */; };
 		14AF492425335FEA00D3FA4C /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AF492325335FEA00D3FA4C /* UIView.swift */; };
 		14AF492F25339AA400D3FA4C /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AF492E25339AA400D3FA4C /* BaseNavigationController.swift */; };
 		14AF49372533AAE900D3FA4C /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AF49362533AAE900D3FA4C /* UITableView.swift */; };
@@ -59,6 +60,7 @@
 
 /* Begin PBXFileReference section */
 		149B5DAE25350FE3004797FD /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
+		14A1D4A62535B24100159C5C /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		14AF492325335FEA00D3FA4C /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		14AF492E25339AA400D3FA4C /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		14AF49362533AAE900D3FA4C /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				14AF49452533BD8C00D3FA4C /* Date.swift */,
 				14AF494E2533CA9100D3FA4C /* UIImageView.swift */,
 				149B5DAE25350FE3004797FD /* UICollectionView.swift */,
+				14A1D4A62535B24100159C5C /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 				14F8E251253250530007B0A2 /* OffersApi.swift in Sources */,
 				14AF49592533CFF000D3FA4C /* OfferDetailsController.swift in Sources */,
 				14AF49412533AD3100D3FA4C /* UILabel.swift in Sources */,
+				14A1D4A72535B24100159C5C /* String.swift in Sources */,
 				14AF494F2533CA9100D3FA4C /* UIImageView.swift in Sources */,
 				14F8E21C253248A90007B0A2 /* Router.swift in Sources */,
 				14F8E213253248A90007B0A2 /* CoordinatorFactoryImp.swift in Sources */,

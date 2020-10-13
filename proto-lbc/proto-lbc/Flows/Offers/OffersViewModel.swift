@@ -78,7 +78,7 @@ class OffersViewModel: OffersListViewModelType {
     
     func getPriceFor(row: Int) -> String {
         guard row < offers.count else { return "" }
-        return "\(offers[row].price)€"
+        return String(format: "%g", offers[row].price) + "€"
     }
     
     func getCategoryFor(row: Int) -> String {
@@ -89,7 +89,7 @@ class OffersViewModel: OffersListViewModelType {
     func getDateFor(row: Int) -> NSAttributedString {
         guard row < offers.count else { return NSAttributedString(string: "") }
         let date = offers[row].creationDate.string(withFormat: "dd/MM/yyyy")
-        let onlineAt = "mis en ligne le \(date)"
+        let onlineAt = "Mis en ligne le \(date)"
         let range = (onlineAt as NSString).range(of: date)
 
         let attributedString = NSMutableAttributedString.init(string: onlineAt)
@@ -178,7 +178,7 @@ extension OffersViewModel: OfferDetailsViewModelType {
     
     var offerPrice: String {
         guard let selectedOffer = selectedOffer else { return "" }
-        return "\(selectedOffer.price)€"
+        return String(format: "%g", selectedOffer.price) + "€"
     }
     
     var offerCategory: String {
@@ -189,7 +189,7 @@ extension OffersViewModel: OfferDetailsViewModelType {
     var offerDate: NSAttributedString {
         guard let selectedOffer = selectedOffer else { return NSAttributedString(string: "") }
         let date = selectedOffer.creationDate.string(withFormat: "dd/MM/yyyy")
-        let onlineAt = "mis en ligne le \(date)"
+        let onlineAt = "Mis en ligne le \(date)"
         let range = (onlineAt as NSString).range(of: date)
 
         let attributedString = NSMutableAttributedString.init(string: onlineAt)
