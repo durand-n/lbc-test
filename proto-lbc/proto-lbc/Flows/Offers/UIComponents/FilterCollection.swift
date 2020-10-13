@@ -23,10 +23,10 @@ protocol FilterCollectionViewModelType {
 class FilterCollection: UIView {
     private let viewModel: FilterCollectionViewModelType
     private let collectionView: UICollectionView
+    private var layout = UICollectionViewFlowLayout()
     
     init(viewModel: FilterCollectionViewModelType) {
         self.viewModel = viewModel
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.estimatedItemSize = CGSize(width: 140, height: 40)
         layout.sectionInset =  UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
         layout.scrollDirection = .horizontal
@@ -75,9 +75,15 @@ extension FilterCollection: UICollectionViewDelegate, UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        indexPath.section == 0 ? viewModel.deselectFilter(row: indexPath.row) : viewModel.selectFilter(row: indexPath.row)
-        collectionView.deleteItems(at: [indexPath])
-        collectionView.reloadSections([1 - indexPath.section])
+        collectionView.performBatchUpdates({
+            indexPath.section == 0 ? viewModel.deselectFilter(row: indexPath.row) : viewModel.selectFilter(row: indexPath.row)
+
+            collectionView.deleteItems(at: [indexPath])
+            collectionView.insertItems(at: [IndexPath(row: collectionView.numberOfItems(inSection: 1 - indexPath.section), section: 1 - indexPath.section)])
+        }, completion: nil)
+        
+
+        collectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
     }
 }
 
@@ -95,12 +101,12 @@ class FilterCollectionCell: UICollectionViewCell {
         filterLabel.setConstraints([
             filterLabel.leftAnchor.constraint(equalTo: container.leftAnchor, constant: 16),
             filterLabel.rightAnchor.constraint(equalTo: container.rightAnchor, constant: -16),
-            filterLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: 4),
-            filterLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -4)
+            filterLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: 5),
+            filterLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -5)
         ])
         
         container.setConstraints([
-            container.heightAnchor.constraint(equalToConstant: 30),
+            container.heightAnchor.constraint(equalToConstant: 30).withPriority(750),
             container.topAnchor.constraint(equalTo: contentView.topAnchor),
             container.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             container.leftAnchor.constraint(equalTo: contentView.leftAnchor),

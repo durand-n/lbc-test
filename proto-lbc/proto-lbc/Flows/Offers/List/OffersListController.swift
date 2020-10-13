@@ -19,6 +19,7 @@ class OffersListController: UIViewController, OffersListView {
     private var viewModel: OffersListViewModelType
     private var tableView = UITableView()
     private var filtersModule: FilterCollection
+    private var emptyView = UIView(backgroundColor: .white)
     
     init(viewModel: OffersListViewModelType) {
         self.viewModel = viewModel
@@ -48,14 +49,18 @@ class OffersListController: UIViewController, OffersListView {
 
     
     func designView() {
-        view.addSubviews([filtersModule, tableView])
+        let emptyStateLabel = UILabel(title: "Aucune annonce disponible", type: .bold, color: .black, size: 14, lines: 0, alignment: .center)
+        let emptyStateRetry = UIButton(title: "Rafraichir", font: .medium, fontSize: 12, textColor: .primary, backgroundColor: .clear)
+        
+        view.addSubviews([filtersModule, tableView, emptyView])
         
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerCellClass(OfferTableViewCell.self)
         tableView.backgroundColor = .white
         tableView.separatorColor = UIColor.black.withAlphaComponent(0.2)
-        
+        tableView.estimatedRowHeight = 40.0
+        tableView.rowHeight = UITableView.automaticDimension
         
         filtersModule.setConstraints([
             filtersModule.topAnchor.constraint(equalTo: view.topAnchor),
@@ -69,10 +74,33 @@ class OffersListController: UIViewController, OffersListView {
             tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
             tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
         ])
+        
+        emptyView.setConstraintsToSuperview()
+        emptyStateRetry.addTarget(self, action: #selector(refreshData), for: .touchUpInside)
+        emptyView.addSubviews([emptyStateLabel, emptyStateRetry])
+        
+        
+        emptyStateLabel.setConstraints([
+            emptyStateLabel.leftAnchor.constraint(equalTo: emptyView.leftAnchor),
+            emptyStateLabel.rightAnchor.constraint(equalTo: emptyView.rightAnchor),
+            emptyStateLabel.centerYAnchor.constraint(equalTo: emptyView.centerYAnchor)
+        ])
+        
+        emptyStateRetry.setConstraints([
+            emptyStateRetry.leftAnchor.constraint(equalTo: emptyView.leftAnchor),
+            emptyStateRetry.rightAnchor.constraint(equalTo: emptyView.rightAnchor),
+            emptyStateRetry.topAnchor.constraint(equalTo: emptyStateLabel.bottomAnchor, constant: 4),
+            emptyStateRetry.heightAnchor.constraint(equalToConstant: 45)
+        ])
     }
     
     func showError(error: String) {
         Loader.hide()
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Erreur", message: error, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     func onShowData(refreshFilters: Bool = false) {
@@ -84,6 +112,10 @@ class OffersListController: UIViewController, OffersListView {
         
         Loader.hide()
     }
+    
+    @objc func refreshData() {
+        viewModel.startFetching()
+    }
 }
 
 extension OffersListController: UITableViewDelegate, UITableViewDataSource {
@@ -91,6 +123,16 @@ extension OffersListController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let offersCount = viewModel.offersCount
+        if offersCount == 0 {
+            emptyView.fadeIn()
+//            tableView.fadeOut()
+//            filtersModule.fadeOut()
+        } else {
+            emptyView.fadeOut()
+//            tableView.fadeIn()
+//            filtersModule.fadeIn()
+        }
         return viewModel.offersCount
     }
     

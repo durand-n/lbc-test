@@ -120,26 +120,11 @@ class OffersViewModel: OffersListViewModelType {
                         })
                         self.onShowData?(true)
                     } else {
-                        self.onShowError?(error?.localizedDescription ?? "unknown error")
+                        self.onShowError?(error?.userFriendly ?? "erreur inconnue")
                     }
                 }
             } else {
-                self.onShowError?(error?.localizedDescription ?? "unknown error")
-            }
-        }
-    }
-    
-    func refreshOffersList() {
-        services.getListing { items, error in
-            if let items = items {
-                self.originalOffers = items.filter({$0.isUrgent}).sorted(by: {
-                    $0.creationDate.compare($1.creationDate) == .orderedDescending
-                }) + items.filter({!$0.isUrgent}).sorted(by: {
-                    $0.creationDate.compare($1.creationDate) == .orderedDescending
-                })
-                self.onShowData?(false)
-            } else {
-                self.onShowError?(error?.localizedDescription ?? "unknown error")
+                self.onShowError?(error?.userFriendly ?? "erreur inconnue")
             }
         }
     }
@@ -211,7 +196,6 @@ extension OffersViewModel: FilterCollectionViewModelType {
         let filter = self.activeCategories[row]
         self.activeCategories.remove(at: row)
         self.availableCategories.append(filter)
-        self.availableCategories.sort()
         applyFilters()
     }
     

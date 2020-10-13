@@ -25,7 +25,7 @@ class OfferTableViewCell: UITableViewCell {
         itemImageView.backgroundColor = .background
         itemImageView.cornerRadius = 8.0
         itemImageView.setConstraints([
-            itemImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 27),
+            itemImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 27).withPriority(750),
             itemImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16),
             itemImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -27),
             itemImageView.widthAnchor.constraint(equalToConstant: 72),
