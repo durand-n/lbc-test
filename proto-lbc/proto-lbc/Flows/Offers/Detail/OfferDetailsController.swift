@@ -22,7 +22,7 @@ class OfferDetailsController: UIViewController, OfferDetailsView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Détails"
+        self.title = "LBC"
         view.backgroundColor = .white
         designView()
     }
@@ -30,8 +30,9 @@ class OfferDetailsController: UIViewController, OfferDetailsView {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.topItem?.title = "Retour"
-
+        self.navigationController?.navigationBar.barTintColor = .white
     }
+    
     
     func designView() {
         let productImageView = UIImageView(image: nil, contentMode: .scaleAspectFit)
@@ -39,61 +40,78 @@ class OfferDetailsController: UIViewController, OfferDetailsView {
             productImageView.load(url: url)
         }
         
-        let titleLabel = UILabel(title: viewModel.offerTitle, type: .medium, color: .black, size: 24, lines: 0, alignment: .left)
-        let priceLabel = UILabel(title: viewModel.offerPrice, type: .medium, color: .primary, size: 14, lines: 1, alignment: .left)
+        let titleLabel = UILabel(title: viewModel.offerTitle, type: .bold, color: .secondary, size: 24, lines: 0, alignment: .left)
+        let priceLabel = UILabel(title: viewModel.offerPrice, type: .heavy, color: .black, size: 24, lines: 1, alignment: .left)
         let dateLabel = UILabel(title: "", type: .medium, color: .gray, size: 12, lines: 1, alignment: .left)
-        let categoryLabel = UILabel(title: viewModel.offerCategory, type: .bold, color: .gray, size: 12, lines: 1, alignment: .left)
-        let descriptionLabel = UILabel(title: "Description: ", type: .bold, color: .black, size: 12, lines: 1, alignment: .left)
-        let descriptionContentLabel = UILabel(title: viewModel.offerTitle, type: .regular, color: .black, size: 12, lines: 0, alignment: .left)
-        let separator = UIView(backgroundColor: UIColor.gray.withAlphaComponent(0.5))
+        let categoryLabel = UILabel(title: viewModel.offerCategory, type: .bold, color: .text, size: 12, lines: 1, alignment: .left)
+        let descriptionContentLabel = UILabel(title: viewModel.offerDescription, type: .regular, color: .text, size: 12, lines: 0, alignment: .left)
+        let detailsContainer = UIView(backgroundColor: .sand)
+        let priceContainer = UIView(backgroundColor: .white)
+        let buyButton = UIButton(title: "Contacter", font: .medium, fontSize: 14, textColor: .primary, backgroundColor: .secondary)
         
         dateLabel.attributedText = viewModel.offerDate
-        view.addSubviews([productImageView, separator, titleLabel, priceLabel, dateLabel, categoryLabel, descriptionLabel, descriptionContentLabel])
+        detailsContainer.addSubviews([titleLabel, dateLabel, categoryLabel, descriptionContentLabel, priceContainer])
+        detailsContainer.cornerRadius = 28
+        detailsContainer.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        priceContainer.addSubviews([priceLabel, buyButton])
+        priceContainer.cornerRadius = 28
+        priceContainer.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        view.addSubviews([productImageView, detailsContainer])
         
         productImageView.setConstraints([
             productImageView.topAnchor.constraint(equalTo: view.topAnchor),
             productImageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
             productImageView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
-            productImageView.bottomAnchor.constraint(equalTo: view.centerYAnchor)
+            productImageView.bottomAnchor.constraint(greaterThanOrEqualTo: view.centerYAnchor, constant: -150)
         ])
         
-        separator.setConstraints([
-            separator.heightAnchor.constraint(equalToConstant: 1),
-            separator.leftAnchor.constraint(equalTo: view.leftAnchor),
-            separator.rightAnchor.constraint(equalTo: view.rightAnchor),
-            separator.topAnchor.constraint(equalTo: productImageView.bottomAnchor),
+        detailsContainer.setConstraints([
+            detailsContainer.topAnchor.constraint(equalTo: productImageView.bottomAnchor, constant: 24),
+            detailsContainer.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            detailsContainer.leftAnchor.constraint(equalTo: view.leftAnchor),
+            detailsContainer.rightAnchor.constraint(equalTo: view.rightAnchor),
         ])
-        
-        categoryLabel.setConstraints([
-            categoryLabel.topAnchor.constraint(equalTo: separator.bottomAnchor, constant: 16),
-            categoryLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
-            categoryLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16)
-        ])
+
         
         titleLabel.setConstraints([
-            titleLabel.topAnchor.constraint(equalTo: categoryLabel.bottomAnchor, constant: 2),
-            titleLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
-            titleLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
+            titleLabel.topAnchor.constraint(equalTo: detailsContainer.topAnchor, constant: 32),
+            titleLabel.leftAnchor.constraint(equalTo: detailsContainer.leftAnchor, constant: 16),
+            titleLabel.rightAnchor.constraint(equalTo: detailsContainer.rightAnchor, constant: -16),
         ])
         
         priceLabel.setConstraints([
-            priceLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
-            priceLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
-            priceLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
+            priceLabel.centerYAnchor.constraint(equalTo: priceContainer.centerYAnchor),
+            priceLabel.leftAnchor.constraint(equalTo: priceContainer.leftAnchor, constant: 24),
+            priceLabel.rightAnchor.constraint(equalTo: priceContainer.centerXAnchor)
         ])
         
-        descriptionLabel.setConstraints([
-            descriptionLabel.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 4),
-            descriptionLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
-            descriptionLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
-            
+        buyButton.cornerRadius = 17.5
+        buyButton.setConstraints([
+            buyButton.heightAnchor.constraint(equalToConstant: 35),
+            buyButton.rightAnchor.constraint(equalTo: detailsContainer.rightAnchor, constant: -16),
+            buyButton.centerYAnchor.constraint(equalTo: priceContainer.centerYAnchor),
+            buyButton.widthAnchor.constraint(equalToConstant: 90)
+        ])
+        
+        categoryLabel.setConstraints([
+            categoryLabel.topAnchor.constraint(equalTo: descriptionContentLabel.bottomAnchor, constant: 16),
+            categoryLabel.leftAnchor.constraint(equalTo: detailsContainer.leftAnchor, constant: 16),
+            categoryLabel.rightAnchor.constraint(equalTo: detailsContainer.rightAnchor, constant: -16),
+            categoryLabel.bottomAnchor.constraint(equalTo: priceContainer.topAnchor, constant: -24)
         ])
         
         descriptionContentLabel.setConstraints([
-            descriptionContentLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 4),
-            descriptionContentLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
-            descriptionContentLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
-            
+            descriptionContentLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
+            descriptionContentLabel.leftAnchor.constraint(equalTo: detailsContainer.leftAnchor, constant: 16),
+            descriptionContentLabel.rightAnchor.constraint(equalTo: detailsContainer.rightAnchor, constant: -16),
+        
+        ])
+        
+        priceContainer.setConstraints([
+            priceContainer.bottomAnchor.constraint(equalTo: detailsContainer.bottomAnchor),
+            priceContainer.leftAnchor.constraint(equalTo: detailsContainer.leftAnchor),
+            priceContainer.rightAnchor.constraint(equalTo: detailsContainer.rightAnchor),
+            priceContainer.heightAnchor.constraint(equalToConstant: 90)
         ])
         
     }

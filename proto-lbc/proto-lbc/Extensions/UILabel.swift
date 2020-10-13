@@ -27,7 +27,7 @@ extension UILabel {
 }
 
 enum FontType {
-    case bold, semiBold, regular, medium
+    case bold, semiBold, regular, medium, heavy
 
     public var font: UIFont {
         return getFontWithSize(15)
@@ -43,6 +43,8 @@ enum FontType {
         /// set custom weight
         var weight = UIFont.Weight.regular
         switch self {
+        case .heavy:
+            weight = .heavy
         case .bold:
             weight = .bold
         case .semiBold:

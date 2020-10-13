@@ -20,6 +20,7 @@ class OffersListController: UIViewController, OffersListView {
     private var tableView = UITableView()
     private var filtersModule: FilterCollection
     private var emptyView = UIView(backgroundColor: .white)
+    private var offersCountLabel = UILabel(title: "", type: .bold, color: .black, size: 20, lines: 1, alignment: .left)
     
     init(viewModel: OffersListViewModelType) {
         self.viewModel = viewModel
@@ -33,7 +34,8 @@ class OffersListController: UIViewController, OffersListView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = viewModel.title
+        title = "LBC"
+        offersCountLabel.text = self.viewModel.title
         view.backgroundColor = .white
         designView()
         viewModel.onShowError = self.showError
@@ -44,7 +46,8 @@ class OffersListController: UIViewController, OffersListView {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = viewModel.title
+        self.navigationController?.navigationBar.barTintColor = .sand
+        self.navigationItem.title = "LBC"
     }
 
     
@@ -52,18 +55,27 @@ class OffersListController: UIViewController, OffersListView {
         let emptyStateLabel = UILabel(title: "Aucune annonce disponible", type: .bold, color: .black, size: 14, lines: 0, alignment: .center)
         let emptyStateRetry = UIButton(title: "Rafraichir", font: .medium, fontSize: 12, textColor: .primary, backgroundColor: .clear)
         
-        view.addSubviews([filtersModule, tableView, emptyView])
+        view.backgroundColor = .sand
+        view.addSubviews([offersCountLabel, filtersModule, tableView, emptyView])
         
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerCellClass(OfferTableViewCell.self)
-        tableView.backgroundColor = .white
-        tableView.separatorColor = UIColor.black.withAlphaComponent(0.2)
+        tableView.backgroundColor = .sand
+        tableView.separatorColor = .clear
+        tableView.separatorStyle = .none
         tableView.estimatedRowHeight = 40.0
         tableView.rowHeight = UITableView.automaticDimension
         
+        offersCountLabel.setConstraints([
+            offersCountLabel.topAnchor.constraint(equalTo: view.topAnchor),
+            offersCountLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
+            offersCountLabel.rightAnchor.constraint(equalTo: view.rightAnchor),
+            offersCountLabel.heightAnchor.constraint(equalToConstant: 27)
+        ])
+        
         filtersModule.setConstraints([
-            filtersModule.topAnchor.constraint(equalTo: view.topAnchor),
+            filtersModule.topAnchor.constraint(equalTo: offersCountLabel.bottomAnchor),
             filtersModule.leftAnchor.constraint(equalTo: view.leftAnchor),
             filtersModule.rightAnchor.constraint(equalTo: view.rightAnchor),
         ])
@@ -105,7 +117,7 @@ class OffersListController: UIViewController, OffersListView {
     
     func onShowData(refreshFilters: Bool = false) {
         DispatchQueue.main.async {
-            self.title = self.viewModel.title
+            self.offersCountLabel.text = self.viewModel.title
             self.tableView.reloadData()
             self.filtersModule.refreshFilters()
         }
@@ -126,12 +138,8 @@ extension OffersListController: UITableViewDelegate, UITableViewDataSource {
         let offersCount = viewModel.offersCount
         if offersCount == 0 {
             emptyView.fadeIn()
-//            tableView.fadeOut()
-//            filtersModule.fadeOut()
         } else {
             emptyView.fadeOut()
-//            tableView.fadeIn()
-//            filtersModule.fadeIn()
         }
         return viewModel.offersCount
     }

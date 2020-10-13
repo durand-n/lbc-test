@@ -10,15 +10,19 @@ import UIKit
 class BaseNavigationController: UINavigationController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        if #available(iOS 13.0, *) {
+            return .darkContent
+        } else {
+            return .default
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationBar.isTranslucent = false
-        self.navigationBar.tintColor = .white
-        self.navigationBar.barTintColor = .primary
-        self.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        self.navigationBar.tintColor = .black
+        self.navigationBar.barTintColor = .sand
+        self.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.secondary]
     }
     
 }

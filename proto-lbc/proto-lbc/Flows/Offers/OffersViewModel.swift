@@ -26,6 +26,7 @@ protocol OffersListViewModelType {
 
 protocol OfferDetailsViewModelType {
     var offerTitle: String { get }
+    var offerDescription: String { get }
     var offerPrice: String { get }
     var offerCategory: String { get }
     var offerDate: NSAttributedString { get }
@@ -159,6 +160,11 @@ extension OffersViewModel: OfferDetailsViewModelType {
     var offerTitle: String {
         guard let selectedOffer = selectedOffer else { return "" }
         return selectedOffer.title
+    }
+    
+    var offerDescription: String {
+        guard let selectedOffer = selectedOffer else { return "" }
+        return selectedOffer.description
     }
     
     var offerPrice: String {

@@ -10,6 +10,8 @@ import UIKit
 extension UIColor {
     class var background: UIColor { return #colorLiteral(red: 0.9294117647, green: 0.9294117647, blue: 0.9294117647, alpha: 1) }
     class var sand: UIColor { return #colorLiteral(red: 0.9647058824, green: 0.9647058824, blue: 0.9647058824, alpha: 1) }
-    class var primary: UIColor { return #colorLiteral(red: 1, green: 0.431372549, blue: 0.07843137255, alpha: 1) }
-    class var secondary: UIColor { return #colorLiteral(red: 0.368627451, green: 0.6549019608, blue: 0.4549019608, alpha: 1) }
+    class var primary: UIColor { return #colorLiteral(red: 0.631372549, green: 0.8588235294, blue: 0.9607843137, alpha: 1) }
+    class var secondary: UIColor { return #colorLiteral(red: 0.2431372549, green: 0.2705882353, blue: 0.6666666667, alpha: 1) }
+    class var text: UIColor { return #colorLiteral(red: 0.3382632732, green: 0.368088156, blue: 0.5840685964, alpha: 1) }
+    class var urgent: UIColor { return #colorLiteral(red: 1, green: 0.2207605541, blue: 0.3205709755, alpha: 1) }
 }

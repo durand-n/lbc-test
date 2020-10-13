@@ -28,7 +28,6 @@ class FilterCollection: UIView {
     init(viewModel: FilterCollectionViewModelType) {
         self.viewModel = viewModel
         layout.estimatedItemSize = CGSize(width: 140, height: 40)
-        layout.sectionInset =  UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
         layout.scrollDirection = .horizontal
         self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         super.init(frame: .zero)
@@ -46,7 +45,7 @@ class FilterCollection: UIView {
     private func designView() {
         self.addSubview(collectionView)
         collectionView.setConstraintsToSuperview()
-        collectionView.backgroundColor = .clear
+        collectionView.backgroundColor = .sand
         
         self.setConstraints([
             self.heightAnchor.constraint(equalToConstant: 60)
@@ -58,7 +57,7 @@ class FilterCollection: UIView {
     }
 }
 
-extension FilterCollection: UICollectionViewDelegate, UICollectionViewDataSource {
+extension FilterCollection: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
@@ -85,10 +84,18 @@ extension FilterCollection: UICollectionViewDelegate, UICollectionViewDataSource
 
         collectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        if section == 0 {
+            return UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
+        } else {
+            return UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
+        }
+    }
 }
 
 class FilterCollectionCell: UICollectionViewCell {
-    private var filterLabel = UILabel(title: "test", type: .bold, color: .orange, size: 12, lines: 1, alignment: .center)
+    private var filterLabel = UILabel(title: "", type: .bold, color: .black, size: 12, lines: 1, alignment: .center)
     private let container = UIView(backgroundColor: .background)
     
     override init(frame: CGRect) {
@@ -123,6 +130,7 @@ class FilterCollectionCell: UICollectionViewCell {
     
     func setContent(title: String, isActive: Bool) {
         filterLabel.text = title
-        container.backgroundColor = isActive ? UIColor.blue.withAlphaComponent(0.3) : .background
+        filterLabel.textColor = isActive ? .secondary : .black
+        isActive ? container.addShadow(offset: CGSize(width: 0, height: 5), color: .black, opacity: 0.2, radius: 5) : container.removeShadow()
     }
 }
