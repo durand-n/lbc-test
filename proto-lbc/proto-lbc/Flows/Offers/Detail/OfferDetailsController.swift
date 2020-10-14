@@ -36,9 +36,6 @@ class OfferDetailsController: UIViewController, OfferDetailsView {
     
     func designView() {
         let productImageView = UIImageView(image: nil, contentMode: .scaleAspectFit)
-        if let url = viewModel.imageUrl {
-            productImageView.load(url: url)
-        }
         
         let titleLabel = UILabel(title: viewModel.offerTitle, type: .bold, color: .secondary, size: 24, lines: 0, alignment: .left)
         let priceLabel = UILabel(title: viewModel.offerPrice, type: .heavy, color: .black, size: 24, lines: 1, alignment: .left)
@@ -48,9 +45,12 @@ class OfferDetailsController: UIViewController, OfferDetailsView {
         let detailsContainer = UIView(backgroundColor: .sand)
         let priceContainer = UIView(backgroundColor: .white)
         let buyButton = UIButton(title: "Contacter", font: .medium, fontSize: 14, textColor: .primary, backgroundColor: .secondary)
+        let urgentContainer = UIView(backgroundColor: .urgent)
+        let urgentMarker = UILabel(title: "urgent", type: .semiBold, color: .white, size: 10, lines: 0, alignment: .center)
         
         dateLabel.attributedText = viewModel.offerDate
         detailsContainer.addSubviews([titleLabel, dateLabel, categoryLabel, descriptionContentLabel, priceContainer])
+
         detailsContainer.cornerRadius = 28
         detailsContainer.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         priceContainer.addSubviews([priceLabel, buyButton])
@@ -97,7 +97,12 @@ class OfferDetailsController: UIViewController, OfferDetailsView {
             categoryLabel.topAnchor.constraint(equalTo: descriptionContentLabel.bottomAnchor, constant: 16),
             categoryLabel.leftAnchor.constraint(equalTo: detailsContainer.leftAnchor, constant: 16),
             categoryLabel.rightAnchor.constraint(equalTo: detailsContainer.rightAnchor, constant: -16),
-            categoryLabel.bottomAnchor.constraint(equalTo: priceContainer.topAnchor, constant: -24)
+        ])
+        
+        dateLabel.setConstraints([
+            dateLabel.topAnchor.constraint(equalTo: categoryLabel.bottomAnchor, constant: 16),
+            dateLabel.leftAnchor.constraint(equalTo: detailsContainer.leftAnchor, constant: 16),
+            dateLabel.bottomAnchor.constraint(equalTo: priceContainer.topAnchor, constant: -24)
         ])
         
         descriptionContentLabel.setConstraints([
@@ -114,6 +119,31 @@ class OfferDetailsController: UIViewController, OfferDetailsView {
             priceContainer.heightAnchor.constraint(equalToConstant: 90)
         ])
         
+        
+        if viewModel.isUrgent {
+            detailsContainer.addSubview(urgentContainer)
+            urgentContainer.setConstraints([
+                urgentContainer.heightAnchor.constraint(equalToConstant: 20),
+                urgentContainer.widthAnchor.constraint(equalToConstant: 45),
+                urgentContainer.leftAnchor.constraint(equalTo: dateLabel.rightAnchor, constant: 8),
+                urgentContainer.rightAnchor.constraint(equalTo: detailsContainer.rightAnchor, constant: -16),
+                urgentContainer.centerYAnchor.constraint(equalTo: dateLabel.centerYAnchor)
+            ])
+            
+            urgentContainer.addSubview(urgentMarker)
+            urgentMarker.setConstraintsToSuperview()
+            urgentContainer.cornerRadius = 6
+        }
+        
+        view.layoutIfNeeded()
+
+        if let url = viewModel.imageUrl {
+            productImageView.load(url: url)
+            productImageView.alpha = 1.0
+        } else {
+            productImageView.image =  #imageLiteral(resourceName: "noPicture")
+            productImageView.alpha = 0.1
+        }
     }
     
     required init?(coder: NSCoder) {

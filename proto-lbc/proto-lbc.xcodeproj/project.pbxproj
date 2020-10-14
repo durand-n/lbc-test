@@ -22,7 +22,6 @@
 		14AF49592533CFF000D3FA4C /* OfferDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AF49582533CFF000D3FA4C /* OfferDetailsController.swift */; };
 		14AF495F2535083E00D3FA4C /* FilterCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AF495E2535083E00D3FA4C /* FilterCollection.swift */; };
 		14F8E1502531FAC80007B0A2 /* proto_lbcTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F8E14F2531FAC80007B0A2 /* proto_lbcTests.swift */; };
-		14F8E15B2531FAC80007B0A2 /* proto_lbcUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F8E15A2531FAC80007B0A2 /* proto_lbcUITests.swift */; };
 		14F8E1EB2532481A0007B0A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14F8E1E92532481A0007B0A2 /* LaunchScreen.storyboard */; };
 		14F8E20D253248A90007B0A2 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F8E1F4253248A90007B0A2 /* AppCoordinator.swift */; };
 		14F8E20E253248A90007B0A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14F8E1F5253248A90007B0A2 /* Assets.xcassets */; };
@@ -52,13 +51,6 @@
 			remoteGlobalIDString = 14F8E1342531FAC40007B0A2;
 			remoteInfo = "proto-lbc";
 		};
-		14F8E1572531FAC80007B0A2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 14F8E12D2531FAC40007B0A2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 14F8E1342531FAC40007B0A2;
-			remoteInfo = "proto-lbc";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -81,9 +73,6 @@
 		14F8E14B2531FAC80007B0A2 /* proto-lbcTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "proto-lbcTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		14F8E14F2531FAC80007B0A2 /* proto_lbcTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = proto_lbcTests.swift; sourceTree = "<group>"; };
 		14F8E1512531FAC80007B0A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		14F8E1562531FAC80007B0A2 /* proto-lbcUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "proto-lbcUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		14F8E15A2531FAC80007B0A2 /* proto_lbcUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = proto_lbcUITests.swift; sourceTree = "<group>"; };
-		14F8E15C2531FAC80007B0A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14F8E1E92532481A0007B0A2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		14F8E1F4253248A90007B0A2 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		14F8E1F5253248A90007B0A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -115,13 +104,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		14F8E1482531FAC80007B0A2 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		14F8E1532531FAC80007B0A2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -162,7 +144,6 @@
 				14F8E1E92532481A0007B0A2 /* LaunchScreen.storyboard */,
 				14F8E1F3253248A90007B0A2 /* proto-lbc */,
 				14F8E14E2531FAC80007B0A2 /* proto-lbcTests */,
-				14F8E1592531FAC80007B0A2 /* proto-lbcUITests */,
 				14F8E1362531FAC40007B0A2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -172,7 +153,6 @@
 			children = (
 				14F8E1352531FAC40007B0A2 /* proto-lbc.app */,
 				14F8E14B2531FAC80007B0A2 /* proto-lbcTests.xctest */,
-				14F8E1562531FAC80007B0A2 /* proto-lbcUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -184,15 +164,6 @@
 				14F8E1512531FAC80007B0A2 /* Info.plist */,
 			);
 			path = "proto-lbcTests";
-			sourceTree = "<group>";
-		};
-		14F8E1592531FAC80007B0A2 /* proto-lbcUITests */ = {
-			isa = PBXGroup;
-			children = (
-				14F8E15A2531FAC80007B0A2 /* proto_lbcUITests.swift */,
-				14F8E15C2531FAC80007B0A2 /* Info.plist */,
-			);
-			path = "proto-lbcUITests";
 			sourceTree = "<group>";
 		};
 		14F8E1F3253248A90007B0A2 /* proto-lbc */ = {
@@ -353,24 +324,6 @@
 			productReference = 14F8E14B2531FAC80007B0A2 /* proto-lbcTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		14F8E1552531FAC80007B0A2 /* proto-lbcUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 14F8E1652531FAC80007B0A2 /* Build configuration list for PBXNativeTarget "proto-lbcUITests" */;
-			buildPhases = (
-				14F8E1522531FAC80007B0A2 /* Sources */,
-				14F8E1532531FAC80007B0A2 /* Frameworks */,
-				14F8E1542531FAC80007B0A2 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				14F8E1582531FAC80007B0A2 /* PBXTargetDependency */,
-			);
-			name = "proto-lbcUITests";
-			productName = "proto-lbcUITests";
-			productReference = 14F8E1562531FAC80007B0A2 /* proto-lbcUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -384,10 +337,6 @@
 						CreatedOnToolsVersion = 12.0.1;
 					};
 					14F8E14A2531FAC80007B0A2 = {
-						CreatedOnToolsVersion = 12.0.1;
-						TestTargetID = 14F8E1342531FAC40007B0A2;
-					};
-					14F8E1552531FAC80007B0A2 = {
 						CreatedOnToolsVersion = 12.0.1;
 						TestTargetID = 14F8E1342531FAC40007B0A2;
 					};
@@ -408,7 +357,6 @@
 			targets = (
 				14F8E1342531FAC40007B0A2 /* proto-lbc */,
 				14F8E14A2531FAC80007B0A2 /* proto-lbcTests */,
-				14F8E1552531FAC80007B0A2 /* proto-lbcUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -424,13 +372,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		14F8E1492531FAC80007B0A2 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		14F8E1542531FAC80007B0A2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -486,14 +427,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		14F8E1522531FAC80007B0A2 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				14F8E15B2531FAC80007B0A2 /* proto_lbcUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -501,11 +434,6 @@
 			isa = PBXTargetDependency;
 			target = 14F8E1342531FAC40007B0A2 /* proto-lbc */;
 			targetProxy = 14F8E14C2531FAC80007B0A2 /* PBXContainerItemProxy */;
-		};
-		14F8E1582531FAC80007B0A2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 14F8E1342531FAC40007B0A2 /* proto-lbc */;
-			targetProxy = 14F8E1572531FAC80007B0A2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -714,46 +642,6 @@
 			};
 			name = Release;
 		};
-		14F8E1662531FAC80007B0A2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GJG75689M4;
-				INFOPLIST_FILE = "proto-lbcUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "durand-n.proto-lbcUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "proto-lbc";
-			};
-			name = Debug;
-		};
-		14F8E1672531FAC80007B0A2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GJG75689M4;
-				INFOPLIST_FILE = "proto-lbcUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "durand-n.proto-lbcUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "proto-lbc";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -780,15 +668,6 @@
 			buildConfigurations = (
 				14F8E1632531FAC80007B0A2 /* Debug */,
 				14F8E1642531FAC80007B0A2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		14F8E1652531FAC80007B0A2 /* Build configuration list for PBXNativeTarget "proto-lbcUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				14F8E1662531FAC80007B0A2 /* Debug */,
-				14F8E1672531FAC80007B0A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 struct Constants {
-    static let SERVER_URL = "​https://raw.githubusercontent.com/leboncoin/paperclip/master"
+    static let SERVER_URL = "https://raw.githubusercontent.com/leboncoin/paperclip/master"
 }
 
 struct Loader {

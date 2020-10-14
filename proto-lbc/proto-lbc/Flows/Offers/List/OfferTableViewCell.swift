@@ -27,7 +27,6 @@ class OfferTableViewCell: UITableViewCell {
         selectionStyle = .none
         
         container.addShadow(offset: CGSize(width: 0, height: 5), color: .black, opacity: 0.2, radius: 5)
-//        container.addShadow(offset: CGSize(width: 0, height: 10))
         container.cornerRadius = 16
         container.setConstraints([
             container.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16),
@@ -92,6 +91,10 @@ class OfferTableViewCell: UITableViewCell {
         itemImageView.image = nil
         if let url = imageUrl {
             itemImageView.load(url: url)
+            itemImageView.alpha = 1.0
+        } else {
+            itemImageView.image = #imageLiteral(resourceName: "noPicture")
+            itemImageView.alpha = 0.1
         }
         urgentContainer.isHidden = !isUrgent
         

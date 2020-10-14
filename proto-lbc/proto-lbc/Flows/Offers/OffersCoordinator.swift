@@ -23,8 +23,9 @@ class OffersCoordinator: BaseCoordinator {
     
     func showOffersList() {
         let module = factory.makeOffersListController(viewModel: viewModel)
-        module.onShowDetails = self.showOfferDetails
-        
+        module.onShowDetails =  { [weak self] in
+            self?.showOfferDetails()
+        }
         self.router.push(module)
     }
     

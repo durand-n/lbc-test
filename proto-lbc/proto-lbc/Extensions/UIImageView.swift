@@ -19,9 +19,21 @@ extension UIImageView {
                 if let image = UIImage(data: data) {
                     DispatchQueue.main.async {
                         self?.image = image
+                        self?.contentMode = .scaleAspectFit
                     }
+                } else {
+                    self?.setPlaceholder()
                 }
+            } else {
+                self?.setPlaceholder()
             }
+        }
+    }
+    
+    func setPlaceholder() {
+        DispatchQueue.main.async {
+            self.image = #imageLiteral(resourceName: "noPicture")
+            self.alpha = 0.1
         }
     }
 }

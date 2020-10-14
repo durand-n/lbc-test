@@ -87,11 +87,10 @@ class OfferDetailsViewModelTests: XCTestCase {
 }
 
 class FilterCollectionViewModelTests: XCTestCase {
-    private var viewModel: FilterCollectionViewModelType & OffersListViewModelType = OffersViewModel(services: OffersTestApi(offers: [Offer(id: 1, title: "testItem", description: "", price: 50.0, categoryId: 3, imagesUrl: OffersApiModel.Medias(small: nil, thumb: nil), creationDate: Date(), isUrgent: false),
-                                                                                                            Offer(id: 1, title: "testItemBis", description: "128", price: 5000.0, categoryId: 3, imagesUrl: OffersApiModel.Medias(small: nil, thumb: nil), creationDate: Date(), isUrgent: false),
-                                                                                                            Offer(id: 1, title: "testAgain", description: "123", price: 10.5, categoryId: 2, imagesUrl: OffersApiModel.Medias(small: nil, thumb: nil), creationDate: Date(), isUrgent: false)],
-                                                                                                   categories: [Cat(id: 3, name: "Voiture"), Cat(id: 2, name: "Maison")]))
-    
+    private var viewModel: FilterCollectionViewModelType & OffersListViewModelType = OffersViewModel(services: OffersTestApi(offers: [Offer(id: 1, title: "Peugeot 208", description: "", price: 5000.0, categoryId: 3, imagesUrl: OffersApiModel.Medias(small: nil, thumb: nil), creationDate: "12/12/2010".dateWithFormat(format: "dd/MM/yyyy")!, isUrgent: false),
+                                                                                                                                      Offer(id: 1, title: "Smart 1999", description: "128", price: 5000.0, categoryId: 3, imagesUrl: OffersApiModel.Medias(small: nil, thumb: nil), creationDate: "22/09/2018".dateWithFormat(format: "dd/MM/yyyy")!, isUrgent: true),
+                                                                                                                                      Offer(id: 1, title: "meuble sdb", description: "123", price: 10.5, categoryId: 2, imagesUrl: OffersApiModel.Medias(small: nil, thumb: nil), creationDate: "5/10/2020".dateWithFormat(format: "dd/MM/yyyy")!, isUrgent: false)],
+                                                                                                                             categories: [Cat(id: 3, name: "Voiture"), Cat(id: 2, name: "Maison")]))
     override func setUp() {
         viewModel.startFetching()
     }
@@ -100,15 +99,15 @@ class FilterCollectionViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.filtersCount, 2)
         XCTAssertEqual(viewModel.activeFiltersCount, 0)
         viewModel.selectFilter(row: 0)
-        XCTAssertEqual(viewModel.activeFilterNameAt(row: 0), "Maison")
+        XCTAssertEqual(viewModel.activeFilterNameAt(row: 0), "Voiture")
         XCTAssertEqual(viewModel.activeFiltersCount, 1)
         XCTAssertEqual(viewModel.filtersCount, 1)
         viewModel.selectFilter(row: 0)
-        XCTAssertEqual(viewModel.activeFilterNameAt(row: 0), "Maison")
+        XCTAssertEqual(viewModel.activeFilterNameAt(row: 0), "Voiture")
         XCTAssertEqual(viewModel.filtersCount, 0)
         XCTAssertEqual(viewModel.activeFiltersCount, 2)
         viewModel.deselectFilter(row: 0)
         XCTAssertEqual(viewModel.filtersCount, 1)
-        XCTAssertEqual(viewModel.activeFilterNameAt(row: 0), "Voiture")
+        XCTAssertEqual(viewModel.activeFilterNameAt(row: 0), "Maison")
     }
 }

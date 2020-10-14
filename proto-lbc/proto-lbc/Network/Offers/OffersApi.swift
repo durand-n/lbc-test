@@ -16,9 +16,9 @@ extension OffersApiRoutes {
     var path: String {
         switch self {
         case .Listing:
-            return "https://raw.githubusercontent.com/leboncoin/paperclip/master/listing.json"
+            return "\(Constants.SERVER_URL)/listing.json"
         case .Categories:
-            return "https://raw.githubusercontent.com/leboncoin/paperclip/master/categories.json"
+            return "\(Constants.SERVER_URL)/categories.json"
         }
     }
 }
@@ -45,6 +45,8 @@ class OffersApiImp: OffersApi {
                     completion(nil, error)
                 }
            }.resume()
+        } else {
+            completion(nil, nil)
         }
     }
     

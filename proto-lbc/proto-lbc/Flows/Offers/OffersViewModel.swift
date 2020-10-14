@@ -26,11 +26,12 @@ protocol OffersListViewModelType {
 
 protocol OfferDetailsViewModelType {
     var offerTitle: String { get }
-    var offerDescription: String { get }
+    var offerDescription: String { get }
     var offerPrice: String { get }
     var offerCategory: String { get }
     var offerDate: NSAttributedString { get }
     var imageUrl: URL? { get }
+    var isUrgent: Bool { get }
 }
 
 class OffersViewModel: OffersListViewModelType {
@@ -62,7 +63,7 @@ class OffersViewModel: OffersListViewModelType {
         self.services = services
     }
     
-    //Protocol properties compliance
+    //Protocol properties and functions compliance
     
     var title: String {
         return "\(offers.count) annonces disponibles"
@@ -194,6 +195,10 @@ extension OffersViewModel: OfferDetailsViewModelType {
         return URL(string: url)
     }
     
+    var isUrgent: Bool {
+        guard let selectedOffer = selectedOffer else { return false }
+        return selectedOffer.isUrgent
+    }
     
 }
 

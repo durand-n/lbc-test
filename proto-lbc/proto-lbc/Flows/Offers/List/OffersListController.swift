@@ -53,7 +53,7 @@ class OffersListController: UIViewController, OffersListView {
     
     func designView() {
         let emptyStateLabel = UILabel(title: "Aucune annonce disponible", type: .bold, color: .black, size: 14, lines: 0, alignment: .center)
-        let emptyStateRetry = UIButton(title: "Rafraichir", font: .medium, fontSize: 12, textColor: .primary, backgroundColor: .clear)
+        let emptyStateRetry = UIButton(title: "Rafraîchir", font: .medium, fontSize: 12, textColor: .primary, backgroundColor: .clear)
         
         view.backgroundColor = .sand
         view.addSubviews([offersCountLabel, filtersModule, tableView, emptyView])
@@ -112,6 +112,7 @@ class OffersListController: UIViewController, OffersListView {
             let alert = UIAlertController(title: "Erreur", message: error, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
+            self.emptyView.fadeIn()
         }
     }
     
@@ -119,7 +120,9 @@ class OffersListController: UIViewController, OffersListView {
         DispatchQueue.main.async {
             self.offersCountLabel.text = self.viewModel.title
             self.tableView.reloadData()
-            self.filtersModule.refreshFilters()
+            if refreshFilters {
+                self.filtersModule.refreshFilters()
+            }
         }
         
         Loader.hide()
