@@ -23,6 +23,8 @@ class BaseNavigationController: UINavigationController {
         self.navigationBar.tintColor = .black
         self.navigationBar.barTintColor = .sand
         self.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.secondary]
+        self.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationBar.shadowImage = UIImage()
     }
     
 }

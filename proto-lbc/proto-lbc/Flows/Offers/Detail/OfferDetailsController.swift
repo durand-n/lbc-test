@@ -41,7 +41,7 @@ class OfferDetailsController: UIViewController, OfferDetailsView {
         let priceLabel = UILabel(title: viewModel.offerPrice, type: .heavy, color: .black, size: 24, lines: 1, alignment: .left)
         let dateLabel = UILabel(title: "", type: .medium, color: .gray, size: 12, lines: 1, alignment: .left)
         let categoryLabel = UILabel(title: viewModel.offerCategory, type: .bold, color: .text, size: 12, lines: 1, alignment: .left)
-        let descriptionContentLabel = UILabel(title: viewModel.offerDescription, type: .regular, color: .text, size: 12, lines: 0, alignment: .left)
+        let descriptionContentTextview = UITextView(backgroundColor: .clear)
         let detailsContainer = UIView(backgroundColor: .sand)
         let priceContainer = UIView(backgroundColor: .white)
         let buyButton = UIButton(title: "Contacter", font: .medium, fontSize: 14, textColor: .primary, backgroundColor: .secondary)
@@ -49,8 +49,15 @@ class OfferDetailsController: UIViewController, OfferDetailsView {
         let urgentMarker = UILabel(title: "urgent", type: .semiBold, color: .white, size: 10, lines: 0, alignment: .center)
         
         dateLabel.attributedText = viewModel.offerDate
-        detailsContainer.addSubviews([titleLabel, dateLabel, categoryLabel, descriptionContentLabel, priceContainer])
+        detailsContainer.addSubviews([titleLabel, dateLabel, categoryLabel, descriptionContentTextview, priceContainer])
 
+        
+        descriptionContentTextview.text = viewModel.offerDescription
+        descriptionContentTextview.isScrollEnabled = false
+        descriptionContentTextview.isEditable = false
+        descriptionContentTextview.font = FontType.regular.getFontWithSize(12)
+        descriptionContentTextview.contentInset = .zero
+        descriptionContentTextview.textColor = .text
         detailsContainer.cornerRadius = 28
         detailsContainer.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         priceContainer.addSubviews([priceLabel, buyButton])
@@ -66,7 +73,7 @@ class OfferDetailsController: UIViewController, OfferDetailsView {
         ])
         
         detailsContainer.setConstraints([
-            detailsContainer.topAnchor.constraint(equalTo: productImageView.bottomAnchor, constant: 24),
+            detailsContainer.topAnchor.constraint(greaterThanOrEqualTo: productImageView.bottomAnchor, constant: 24),
             detailsContainer.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             detailsContainer.leftAnchor.constraint(equalTo: view.leftAnchor),
             detailsContainer.rightAnchor.constraint(equalTo: view.rightAnchor),
@@ -94,7 +101,7 @@ class OfferDetailsController: UIViewController, OfferDetailsView {
         ])
         
         categoryLabel.setConstraints([
-            categoryLabel.topAnchor.constraint(equalTo: descriptionContentLabel.bottomAnchor, constant: 16),
+            categoryLabel.topAnchor.constraint(equalTo: descriptionContentTextview.bottomAnchor, constant: 16),
             categoryLabel.leftAnchor.constraint(equalTo: detailsContainer.leftAnchor, constant: 16),
             categoryLabel.rightAnchor.constraint(equalTo: detailsContainer.rightAnchor, constant: -16),
         ])
@@ -105,10 +112,10 @@ class OfferDetailsController: UIViewController, OfferDetailsView {
             dateLabel.bottomAnchor.constraint(equalTo: priceContainer.topAnchor, constant: -24)
         ])
         
-        descriptionContentLabel.setConstraints([
-            descriptionContentLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
-            descriptionContentLabel.leftAnchor.constraint(equalTo: detailsContainer.leftAnchor, constant: 16),
-            descriptionContentLabel.rightAnchor.constraint(equalTo: detailsContainer.rightAnchor, constant: -16),
+        descriptionContentTextview.setConstraints([
+            descriptionContentTextview.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
+            descriptionContentTextview.leftAnchor.constraint(equalTo: detailsContainer.leftAnchor, constant: 12),
+            descriptionContentTextview.rightAnchor.constraint(equalTo: detailsContainer.rightAnchor, constant: -12),
         
         ])
         
@@ -144,6 +151,8 @@ class OfferDetailsController: UIViewController, OfferDetailsView {
             productImageView.image =  #imageLiteral(resourceName: "noPicture")
             productImageView.alpha = 0.1
         }
+        
+        descriptionContentTextview.isScrollEnabled = true
     }
     
     required init?(coder: NSCoder) {

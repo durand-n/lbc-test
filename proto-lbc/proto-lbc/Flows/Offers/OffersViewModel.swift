@@ -112,7 +112,9 @@ class OffersViewModel: OffersListViewModelType {
     func startFetching() {
         services.getCategories { categories, error in
             if let categories = categories {
-                self.translateToDictionnary(categories)
+                self.categories = categories.reduce(into: [Int: String](), {
+                    $0[$1.id] = $1.name
+                })
                 self.services.getListing { items, error in
                     if let items = items {
                         self.originalOffers = items.filter({$0.isUrgent}).sorted(by: {
@@ -131,14 +133,6 @@ class OffersViewModel: OffersListViewModelType {
         }
     }
     
-    func translateToDictionnary(_ categories: [OffersApiModel.Category]) {
-        var newCategories: [Int: String] = [:]
-        categories.forEach { category in
-            newCategories[category.id] = category.name
-        }
-        self.categories = newCategories
-    }
-    
     func selectOffer(row: Int) -> Bool {
         guard row < offers.count else { return false }
         self.selectedOffer = offers[row]
@@ -154,7 +148,6 @@ class OffersViewModel: OffersListViewModelType {
         self.onShowData?(false)
     }
     
-
 }
 
 extension OffersViewModel: OfferDetailsViewModelType {
